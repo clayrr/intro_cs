@@ -1,7 +1,9 @@
 String userChoice = "Not Chosen";
 String computerChoice;
 int rand;
-
+int draw;
+int compWin;
+int userWin;
 
 void setup() {
   size(700, 700);
@@ -41,16 +43,26 @@ void draw() {
 
 
   text("Computer: " + computerChoice, 200, 350);
-
+  
   if (userChoice == "Rock" && computerChoice == "Rock" || userChoice == "Paper" && computerChoice == "Paper"|| userChoice == "Scissors" && computerChoice == "Scissors") {
     text("Result: You Draw", 350, 500);
+
+    
   } else if (userChoice == "Rock" && computerChoice == "Scissors" || userChoice == "Paper" && computerChoice == "Rock" || userChoice == "Scissors" && computerChoice == "Paper") {
     text("Result: You win", 350, 500);
+
   } else if (userChoice == "Not Chosen") {
     text("Result: Not Chosen", 350, 500);
   } else {
     text("Result: You lose", 350, 500);
+
   }
+  
+  text("Draw: " + draw, 80, 600);
+  text("User Wins: " + userWin, 200, 600);
+  text("Computer Wins: " + compWin, 350, 600);
+  
+  
 }
 
 void mousePressed() {
@@ -75,5 +87,19 @@ void mousePressed() {
     computerChoice = "Paper";
   } else if (rand == 2) {
     computerChoice = "Scissors";
+  }
+  
+  if (userChoice == "Rock" && computerChoice == "Rock" || userChoice == "Paper" && computerChoice == "Paper"|| userChoice == "Scissors" && computerChoice == "Scissors") {
+   
+    draw = draw + 1;
+    
+  } else if (userChoice == "Rock" && computerChoice == "Scissors" || userChoice == "Paper" && computerChoice == "Rock" || userChoice == "Scissors" && computerChoice == "Paper") {
+
+    userWin = userWin + 1;
+  } else if (userChoice == "Not Chosen") {
+ 
+  } else {
+   
+    compWin = compWin + 1;
   }
 }
